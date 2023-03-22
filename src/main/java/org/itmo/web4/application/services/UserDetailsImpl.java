@@ -1,4 +1,4 @@
-package application.services;//package services;
+package org.itmo.web4.application.services;//package services;
 //
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 //import lombok.AllArgsConstructor;

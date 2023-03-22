@@ -1,4 +1,4 @@
-package application.model;
+package org.itmo.web4.application.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -6,7 +6,6 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @Entity

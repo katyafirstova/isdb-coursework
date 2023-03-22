@@ -1,9 +1,8 @@
-package application.controller;
+package org.itmo.web4.application.controller;
 
-import application.model.User;
-import application.repository.UserRepository;
-import exceptions.UserNotFoundException;
-import javassist.NotFoundException;
+import org.itmo.web4.application.model.User;
+import org.itmo.web4.application.repository.UserRepository;
+import org.itmo.web4.exceptions.UserNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +29,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    User getUserById(@PathVariable Long id) throws NotFoundException {
+    User getUserById(@PathVariable Long id) throws UserNotFoundException {
 
 
         return userRepository.findById(id)

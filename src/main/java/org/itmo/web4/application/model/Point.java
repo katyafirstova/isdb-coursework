@@ -1,4 +1,4 @@
-package application.model;
+package org.itmo.web4.application.model;
 
 import lombok.Getter;
 import lombok.Setter;

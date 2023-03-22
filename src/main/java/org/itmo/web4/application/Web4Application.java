@@ -1,4 +1,4 @@
-package application;
+package org.itmo.web4.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
