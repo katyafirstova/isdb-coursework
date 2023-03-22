@@ -1,8 +1,7 @@
-package org.itmo.web4.application.controller;
+package application.controller;
 
-
-import org.itmo.web4.application.model.Point;
-import org.itmo.web4.application.repository.PointRepository;
+import application.model.Point;
+import application.repository.PointRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

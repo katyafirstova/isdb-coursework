@@ -1,4 +1,4 @@
-package org.itmo.web4.application.controller;//package controller;
+package application.controller;//package controller;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.http.ResponseEntity;

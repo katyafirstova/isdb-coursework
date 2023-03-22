@@ -1,7 +1,6 @@
-package org.itmo.web4.application.repository;
+package application.repository;
 
-
-import org.itmo.web4.application.model.User;
+import application.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

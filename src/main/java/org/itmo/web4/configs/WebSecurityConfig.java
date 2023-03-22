@@ -1,4 +1,4 @@
-package org.itmo.web4.application.configs;//package spring.configs;
+package org.itmo.web4.configs;//package spring.configs;
 //
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.security.authentication.AuthenticationManager;
