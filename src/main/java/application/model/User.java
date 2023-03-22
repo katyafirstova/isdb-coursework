@@ -1,9 +1,10 @@
-package spring.model;
+package application.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -31,10 +32,6 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Getter
-    @Setter
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Point> points;
 
     public User(String username, String password) {
     }

@@ -1,7 +1,8 @@
-package spring;
+package application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 
 @SpringBootApplication
 public class Web4Application {
