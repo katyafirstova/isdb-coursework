@@ -4,6 +4,7 @@ import org.itmo.web4.auth.JwtResponse;
 import org.itmo.web4.auth.LoginRequest;
 import org.itmo.web4.auth.ResponseMessage;
 import org.itmo.web4.auth.SignupRequest;
+import org.itmo.web4.exceptions.UserNotFoundException;
 import org.itmo.web4.jwt.JwtUtils;
 import org.itmo.web4.model.User;
 import org.itmo.web4.repository.UserRepository;
@@ -18,11 +19,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-
-@CrossOrigin
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class AuthController {
 
     @Autowired
@@ -36,7 +38,7 @@ public class AuthController {
 
     UserDetailsImpl userDetails;
 
-    @PostMapping("/auth")
+    @GetMapping("/auth")
     public ResponseEntity<?> authUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate
                 (new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -49,7 +51,7 @@ public class AuthController {
 
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody SignupRequest signupRequest) {
         if (userRepository.existsByUsername(signupRequest.getUsername())) {
             return ResponseEntity.badRequest().body(new ResponseMessage("This username is already exists"));
@@ -61,6 +63,24 @@ public class AuthController {
         return ResponseEntity.ok(new ResponseMessage("User created"));
 
 
+    }
+
+    @GetMapping("/users")
+    List<User> all() {
+        return userRepository.findAll();
+    }
+
+    @PostMapping("/addUser")
+    User newUser(@RequestBody User newUser) {
+        return userRepository.save(newUser);
+    }
+
+    @GetMapping("/users/{id}")
+    User getUserById(@PathVariable Long id) throws UserNotFoundException {
+
+
+        return userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
     }
 
 

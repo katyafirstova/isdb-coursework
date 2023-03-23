@@ -1,5 +1,6 @@
 package org.itmo.web4.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -7,8 +8,9 @@ import org.springframework.data.annotation.Id;
 import javax.persistence.*;
 
 
-//@Entity
-//@Table(name = "point_table")
+@Entity
+@Table(name = "point_table")
+
 public class Point {
 
     @javax.persistence.Id
@@ -45,6 +47,12 @@ public class Point {
     }
 
 
+    public Point(double x, double y, double r) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+    }
+
     private boolean isRectangleHit() {
         return x <= 0 && y >= 0 && x >= -r && y >= r / 2;
     }
@@ -60,6 +68,8 @@ public class Point {
     public void validate() {
         this.result = isRectangleHit() || isCircleHit() || isTriangleHit();
     }
+
+
 
 
 }
