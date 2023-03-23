@@ -3,22 +3,19 @@ package org.itmo.web4.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 
 
-@Entity
-@Table(name = "users")
+@Entity(name = "users")
 @NoArgsConstructor
 public class User {
 
-    @Id
-    @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @Id
     @Getter
     @Setter
-    @Column(name = "id")
     private long id;
 
     @Getter
@@ -35,12 +32,11 @@ public class User {
     public User(String username, String password) {
     }
 
-
-    public void setId(Long id) {
-        this.id = id;
+    public long getId() {
+        return id;
     }
 
-    public Long getId() {
-        return id;
+    public void setId(long id) {
+        this.id = id;
     }
 }
