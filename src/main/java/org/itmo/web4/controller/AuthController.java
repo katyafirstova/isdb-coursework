@@ -38,7 +38,7 @@ public class AuthController {
 
     UserDetailsImpl userDetails;
 
-    @GetMapping("/auth")
+    @GetMapping("/login")
     public ResponseEntity<?> authUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate
                 (new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
