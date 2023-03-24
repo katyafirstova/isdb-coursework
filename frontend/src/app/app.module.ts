@@ -17,7 +17,7 @@ import { SignUpComponent } from './components/register/register.component';
 import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./services/auth-inspector";
-import { ErrorNoticeComponent } from './components/error/error.component';
+// import { ErrorNoticeComponent } from './components/error/error.component';
 import { MainPageComponent } from './pages/main/main-page.component';
 import {AuthGuardService} from "./services/auth-guard.service";
 // import { InputAreaComponent } from './components/input-area/input-area.component';
@@ -42,7 +42,6 @@ const appRoutes: Routes =[
     IndexPageComponent,
     LoginComponent,
     SignUpComponent,
-    ErrorNoticeComponent,
     MainPageComponent,
     // InputAreaComponent,
     // GraphComponent,
