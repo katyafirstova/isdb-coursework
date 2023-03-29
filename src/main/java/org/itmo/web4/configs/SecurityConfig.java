@@ -25,10 +25,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
 
-    @Bean
-    public JwtAuthFilter jwtAuthFilter() {
-        return new JwtAuthFilter();
-    }
+    @Autowired
+    private JwtAuthFilter jwtAuthFilter;
+
 
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     @Override
@@ -47,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated();
 
-        httpSecurity.addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterBefore(this.jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override

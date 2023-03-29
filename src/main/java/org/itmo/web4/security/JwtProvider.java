@@ -25,7 +25,7 @@ public class JwtProvider {
     public void init() throws StoredKeyException {
         try {
             keyStore = KeyStore.getInstance("JKS");
-            InputStream resource = getClass().getResourceAsStream("/web4.jks");
+            InputStream resource = getClass().getResourceAsStream("classpath:web4.jks");
             keyStore.load(resource, "12345678".toCharArray());
         } catch (KeyStoreException | CertificateException | NoSuchAlgorithmException | IOException e) {
             throw new StoredKeyException(" Exception occured while loading keystore");

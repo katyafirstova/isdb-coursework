@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface PointRepository extends JpaRepository<Point, Long> {
-   List<Point> findByUserName(String userName);
-   void deleteByUserName(String userName);
+//    List<Point> findByUserName(String userName);
+//    void deleteByUserName(String userName);
 }
