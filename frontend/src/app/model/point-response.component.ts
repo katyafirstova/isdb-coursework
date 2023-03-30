@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import {PointComponent} from "./point/point.component";
+import {Point} from "./point.component";
 
 
 export interface PointResponse {
-  data: PointComponent[]
+  data: Point[]
 
 }

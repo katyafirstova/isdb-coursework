@@ -1,6 +1,9 @@
 .header {
-  padding: 5px 20px;
   background: royalblue;
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+  font-family: 'Comfortaa', cursive;
 }
 
 .title{
@@ -8,16 +11,4 @@
   text-decoration: none;
 }
 
-.login,.register{
-  float: right;
-  text-decoration: none;
-  color: aliceblue;
-  padding-top: 10px;
-}
-
-.button {
-  width: 100px;
-  height: auto;
-
-}
 

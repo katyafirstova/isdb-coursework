@@ -15,8 +15,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './auth/login/login.component';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import { FormComponent } from './components/form/form.component';
-import { Points } from './model/point/point.component';
-import { PointService } from './services/point.service';
 import {HeaderComponent} from './header/header.component'
 import {InputNumberModule} from "primeng/inputnumber";
 import  {RadiusService} from './services/radius.service';

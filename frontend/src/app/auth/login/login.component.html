@@ -12,19 +12,16 @@
       <small id="sign-in-username-help" class="p-error block h-3">
         <span *ngIf="usernameIsShort">Cannot be empty!</span>
       </small>
-    </div>
-
-    <div class="field mt-5">
       <label for="sign-in-password" class="block text-white text-lg">Password</label>
       <input id="sign-in-password" type="password" aria-describedby="username2-help" class="" pInputText
              [(ngModel)]="password" maxlength="20"/>
       <small id="sign-in-password-help" class="p-error block h-3"><span *ngIf="passwordIsShort">Cannot be empty!</span></small>
-    </div>
+    </div>D
 
     <div class="w-[100%] flex justify-center">
-      <button pButton pRipple type="button" label="Sign in" class="p-button-raised mt-8 text-xl"
+      <button  type="button" label="Sign in" class="button"
               (click)="validateForm()" [routerLink]="['/main']"
-      ></button>
+      >login</button>
     </div>
 
   </div>
