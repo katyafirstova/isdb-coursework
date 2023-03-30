@@ -1,16 +1,14 @@
-import { Component } from '@angular/core';
+import {Observable} from "rxjs";
 
-@Component({
-  selector: 'app-point',
-  templateUrl: './point.component.html',
-  styleUrls: ['./point.component.scss']
-})
-export class PointComponent {
+export class Points {
+  total: number;
+  points: Point[];
+}
 
-  id!: number;
-  result!: boolean;
-  x!: number;
-  y!: number;
-  r!: number;
-
+export class Point {
+  id: number;
+  x: number;
+  y: number;
+  r: number;
+  hit: boolean;
 }

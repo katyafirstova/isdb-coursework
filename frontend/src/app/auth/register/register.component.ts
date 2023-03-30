@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {RegisterPayload} from '../register-payload';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 
@@ -11,38 +9,24 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm: FormGroup;
-  registerPayload: RegisterPayload;
+  username: string = ""
+  password: string = ""
+  password2: string = ""
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router:Router) {
-    this.registerForm = this.formBuilder.group({
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    });
-    this.registerPayload = {
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    };
+  usernameIsShort: boolean = false
+  passwordIsShort: boolean = false
+  passwordsEquals: boolean = true
+
+  constructor(authService: AuthService, router: Router) {
+
   }
-
   ngOnInit() {
   }
 
-  onSubmit() {
-    this.registerPayload.username = this.registerForm.get('username')!.value;
-    this.registerPayload.email = this.registerForm.get('email')!.value;
-    this.registerPayload.password = this.registerForm.get('password')!.value;
-    this.registerPayload.confirmPassword = this.registerForm.get('confirmPassword')!.value;
-
-    this.authService.register(this.registerPayload).subscribe(data => {
-      console.log('register success');
-      this.router.navigateByUrl('/register-success');
-    }, error => {
-      console.log('register failed');
-    });
+  validateForm(): boolean {
+    this.usernameIsShort = this.username.length == 0
+    this.passwordIsShort = this.password.length == 0
+    this.passwordsEquals = this.password == this.password2
+    return  !this.usernameIsShort && !this.passwordIsShort && this.passwordsEquals
   }
 }

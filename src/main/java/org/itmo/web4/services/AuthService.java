@@ -36,7 +36,7 @@ public class AuthService {
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     private JwtProvider jwtProvider;
 
-    public ResponseEntity signup(RegisterRequest registerRequest) {
+    public ResponseEntity register(RegisterRequest registerRequest) {
 
         User user = new User();
         user.setUsername(registerRequest.getUsername());

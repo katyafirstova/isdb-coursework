@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("api/auth")
 public class AuthController {
 
 
@@ -18,8 +18,8 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public ResponseEntity signup(@RequestBody RegisterRequest registerRequest) {
-        authService.signup(registerRequest);
+    public ResponseEntity register(@RequestBody RegisterRequest registerRequest) {
+        authService.register(registerRequest);
         return new ResponseEntity(HttpStatus.OK);
 
     }

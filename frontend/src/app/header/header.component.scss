@@ -1,4 +1,4 @@
-.header{
+.header {
   padding: 5px 20px;
   background: royalblue;
 }
@@ -15,13 +15,9 @@
   padding-top: 10px;
 }
 
-.logout,.new-post{
-  float: right;
-  color: aliceblue;
-  padding-top: 10px;
+.button {
+  width: 100px;
+  height: auto;
+
 }
 
-.logout:hover, .new-post:hover{
-  color: aliceblue;
-  text-decoration: none;
-}

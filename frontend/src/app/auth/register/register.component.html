@@ -1,22 +1,38 @@
-<div class="container justify-content-center">
-  <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <h1 class="h3 mb-3 font-weight-normal">Please Register</h1>
-    <div class="form-group">
-      <label for="inputUsername" class="sr-only">Username</label>
-      <input type="text" id="inputUsername" [formControlName]="'username'" class="form-control" placeholder="Username" required="" autofocus="">
+<div class="bg-light-gray h-[550px] max-w-[550px] shadow-md mx-auto md:mt-16 mt-8 overflow-hidden
+flex justify-center relative">
+  <div class="h-[85%] m-auto">
+
+
+    <div class="field mt-3">
+      <label for="sign-up-username" class="block text-white text-lg">Username</label>
+      <input id="sign-up-username" type="username" aria-describedby="username2-help" class="" pInputText
+             [(ngModel)]="username" maxlength="20"
+      />
+      <small id="sign-up-username-help" class="p-error block h-3" *ngIf="usernameIsShort">Cannot be empty!</small>
     </div>
-    <div class="form-group">
-      <label for="inputEmail" class="sr-only">Email</label>
-      <input type="text" id="inputEmail" [formControlName]="'email'"class="form-control" placeholder="Email" required="" autofocus="">
+
+    <div class="field mt-3">
+      <label for="sign-up-password" class="block text-white text-lg">Password</label>
+      <input id="sign-up-password" type="password" aria-describedby="username2-help" class="" pInputText
+             [(ngModel)]="password" maxlength="20"
+      />
+      <small id="sign-up-password-help" class="p-error block h-3" *ngIf="passwordIsShort">Cannot be empty!</small>
     </div>
-    <div class="form-group">
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" [formControlName]="'password'" class="form-control" placeholder="Password" required="">
+
+    <div class="field mt-3">
+      <label for="sign-up-password2" class="block text-white text-lg">Password again</label>
+      <input id="sign-up-password2" type="password" aria-describedby="username2-help" class="" pInputText
+             [(ngModel)]="password2" maxlength="20"
+      />
+      <small id="sign-up-password2-help" class="p-error block h-3" *ngIf="!passwordsEquals">Different passwords!</small>
     </div>
-    <div class="form-group">
-      <label for="inputConfirmPassword" class="sr-only">Password</label>
-      <input type="password" id="inputConfirmPassword" [formControlName]="'confirmPassword'" class="form-control" placeholder="Confirm Password" required="">
+
+    <div class="w-[100%] flex justify-center">
+      <button pButton pRipple type="button" label="Sign in"
+              class="p-button-raised mt-4 text-xl"
+              (click)="validateForm()" [routerLink]="['/register-success']"
+      ></button>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-  </form>
+
+  </div>
 </div>

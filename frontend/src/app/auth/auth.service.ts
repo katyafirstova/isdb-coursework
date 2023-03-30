@@ -1,43 +1,54 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {RegisterPayload} from './register-payload';
-import {Observable} from 'rxjs';
-import {LoginPayload} from './login-payload';
-import {JwtAuthResponse} from './jwt-auth-response';
-import {map} from 'rxjs/operators';
-import {LocalStorageService} from "ngx-webstorage";
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {catchError, delay, Observable, retry, tap, throwError} from "rxjs";
+import {ErrorService} from "../services/error.service";
+import {AuthResponse} from "../model/auth-response";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'http://localhost:8080/api/auth/';
 
-  constructor(private httpClient: HttpClient, private localStorageService: LocalStorageService) {
+  private isAuth = false
+
+  constructor(private http: HttpClient, private errorService: ErrorService) {
   }
 
-  register(registerPayload: RegisterPayload): Observable<any> {
-    return this.httpClient.post(this.url + 'register', registerPayload);
+  setIsAuth(condition: boolean) {
+    this.isAuth = condition
   }
 
-  login(loginPayload: LoginPayload) : Observable<boolean> {
-    return this.httpClient.post<JwtAuthResponse>(this.url + 'login', loginPayload).pipe(map(data => {
-      this.localStorageService.store('authenticationToken', data.authenticationToken);
-      this.localStorageService.store('username', data.username);
-      return true;
-    }));;
+  getIsAuth(): boolean {
+    return this.isAuth
   }
 
-  // isAuthenticated(): boolean
-  //   return this.localStoraqeService.retrieve('username') != null;
-  // }
-  //
-  // logout() {
-  //   this.localStoraqeService.clear('authenticationToken');
-  //   this.localStoraqeService.clear('username');
-  // }
+  login(username: string, password: string): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>("/api/auth/login",
+        {
+          username: username,
+          password: password
+        })
+        .pipe(
+        catchError(this.errorHandler.bind(this))
+    )
+  }
 
+  register(username: string, password: string): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>("/api/auth/register",
+        {
+          username: username,
+          password: password
+        })
+    .pipe(
+    catchError(this.errorHandler.bind(this))
+    )
+  }
+    private errorHandler(error: HttpErrorResponse) {
+        this.errorService.handle(error.error.message)
+        return throwError(() => error.message)
+    }
 
 
 
 }
+

@@ -23,7 +23,7 @@ public class PointController {
         return pointRepository.findAll();
     }
 
-//    @PostMapping("/insert")
+   @PostMapping("/insert")
     void insertPoint(@RequestBody PointRequest pointRequest) {
         Point point = new Point(pointRequest.getX(), pointRequest.getY(), pointRequest.getR());
         pointRepository.save(point);

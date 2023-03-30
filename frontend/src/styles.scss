@@ -1,17 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
+@import "primeng/resources/primeng.min.css";
+@import "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-html {
-  background-color: #fff;
-  color: #555;
-  font-family: 'Lato', 'Arial', sans-serif;
-  font-weight: 400;
-  font-size: 20px;
-  text-rendering: optimizeLegibility;
-}
+html, body { height: 100%; }

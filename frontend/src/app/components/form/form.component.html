@@ -9,9 +9,12 @@
     </small>
 
 
-    <div class="w-[100%] flex justify-center  mt-10">
-        <label for="y-input" class="text-white text-2xl mr-1">Y :  {{yValue}}</label>
-        <p-slider [(ngModel)]="yValue" id="y-input" [min]="-3" [max]="5" class="w-[220px] ml-3 mt-3.5"></p-slider>
+
+    <div>
+        <label class="text-white mt-3 mr-2 text-2xl">Y </label>
+
+        <input type="text" pInputText [(ngModel)]="yValue" class="w-full"/>
+        <p-slider [(ngModel)]="yValue" class="w-full"></p-slider>
     </div>
 
 

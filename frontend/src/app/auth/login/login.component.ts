@@ -11,34 +11,34 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
-  loginPayload: LoginPayload;
 
-  constructor(private authService: AuthService, private router: Router) {
-    this.loginForm = new FormGroup({
-      username: new FormControl(),
-      password: new FormControl()
-    });
-    this.loginPayload = {
-      username: '',
-      password: ''
-    };
+  username: string = ""
+  password: string = ""
+
+  usernameIsShort: boolean = false
+  passwordIsShort: boolean = false
+
+  constructor(private router: Router, private authService: AuthService) {
+  }
+
+  redirect(path: String) {
+    this.router.navigate([path])
+  }
+
+  // login() {
+  //   if (this.validateForm()) this.authService.login(this.username, this.password).subscribe((res)=>{
+  //     console.log(res.jwtAccessToken)
+  //     this.router.navigate(['/main'])
+  //   })
+  // }
+
+  validateForm() : boolean {
+    this.usernameIsShort = this.username.length == 0
+    this.passwordIsShort = this.password.length == 0
+    return !this.usernameIsShort && !this.passwordIsShort
   }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    this.loginPayload.username = this.loginForm.get('username')!.value;
-    this.loginPayload.password = this.loginForm.get('password')!.value;
-
-    this.authService.login(this.loginPayload).subscribe(data => {
-      if (data) {
-        console.log('login success');
-        this.router.navigateByUrl('/home');
-      } else {
-        console.log('Login failed');
-      }
-    });
-  }
 }

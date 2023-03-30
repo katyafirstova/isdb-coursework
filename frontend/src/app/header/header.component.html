@@ -1,31 +1,20 @@
 <div class="header">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h1>web-4</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>web-4</h1>
 
-        <h2>Firstova Ekaterina</h2>
-        <h2>P32131</h2>
+                <h2>Firstova Ekaterina</h2>
+                <h2>P32131</h2>
 
+                <button type="button" label="login"
+                        [routerLink]="['/login']"
+                ></button>
+            </div>
+                <button type="button" label="register"
+                        [routerLink]="['/register']"
+                ></button>
 
-
-        <!--      <div class="col-md-3" *ngIf="!authService.isAuthenticated()">-->
-                <a href="/login" class="login btn btn-default" (click) = "redirect('/login')">Login</a>
-                <a href="/register" class="register btn btn-default" (click) = "redirect('/register')">Register</a>
-              </div> <!-- Login and Register -->
-
-
-<!--      </div>-->
-<!--&lt;!&ndash;      <div class="col-md-3" *ngIf="authService.isAuthenticated()">&ndash;&gt;-->
-<!--&lt;!&ndash;        <button class="logout btn btn-default" (click)="logout()">Logout</button>&ndash;&gt;-->
-<!--      </div>-->
-<!--&lt;!&ndash;      <div class="col-md-3" *ngIf="!authService.isAuthenticated()">&ndash;&gt;-->
-<!--        <a href="/login" class="login btn btn-default">Login</a>-->
-<!--        <a href="/register" class="register btn btn-default">Register</a>-->
-<!--      </div> &lt;!&ndash; Login and Register &ndash;&gt;-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-      </div>
     </div>
-  </div>
+</div>
+</div>

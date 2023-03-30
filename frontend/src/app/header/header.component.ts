@@ -1,25 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../auth/auth.service';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthService} from "../services/auth.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor(private router: Router, private authService: AuthService) {
-  }
+    smallWidth = window.innerWidth < 400
 
-  redirect(path: String){
-    this.router.navigate([path])
-  }
+    constructor(authService: AuthService, router: Router) {
+        if (authService.setIsAuth()) {
+            router.navigate(['']);
+        }
+    }
 
-  ngOnInit() {
-  }
-  //
-  // logout() {
-  //   this.authService.logout();
-  // }
+    ngOnInit(): void {
+        // this.authService.restoreAuth().subscribe(()=>{
+        //   this.authService.setIsAuth(true)
+        //   this.redirect("main")
+    }
+
+
 }

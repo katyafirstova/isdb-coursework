@@ -1,13 +1,27 @@
-import {Component, OnChanges, SimpleChanges} from '@angular/core';
-import {PointService} from "../../services/point.service/point.service";
-import {RadiusService} from "../../services/radius.service/radius.service";
+import {Component, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
+import {PointService} from "../../services/point.service";
+import {RadiusService} from "../../services/radius.service";
+import {GraphComponent} from "../graph/graph.component";
+import {FormGroup} from "@angular/forms";
+import {ErrorService} from "../../services/error.service";
+
+
 
 @Component({
-  selector: 'app-input-area',
-  templateUrl: './input-area.component.html',
-  styleUrls: ['./input-area.component.scss']
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
+
+  submitted = false;
+  @ViewChild(GraphComponent) graphComponent:GraphComponent;
+  @ViewChild("customNotification", { static: true }) customNotificationTmpl;
+  private readonly notifier: ErrorService;
+  xInputOnChange: boolean = false;
+  yInputOnFocus: boolean = false;
+  rInputOnChange: boolean = false;
+  mainForm: FormGroup;
 
   constructor(private pointService: PointService, public radiusService: RadiusService) {
   }
@@ -16,46 +30,69 @@ export class FormComponent {
   yValue: number = 0
 
   submit() {
-    if (this.validateX() && this.radiusService.validateR()) {
-      this.pointService.applyHit(this.xValue, this.yValue).subscribe()
-      setTimeout(() => {
-        this.pointService.getHits().subscribe()
-      }, 1000)
+    this.submitted = true;
+
+    if (this.mainForm.invalid) {
+      return;
     }
+
+    let req = this.mainForm.value;
+    req.y = req.y.replace(",", ".");
+    this.updateAllValues();
+    this.sendPoint(req);
   }
 
-  validateX(): boolean {
-    if (this.xValue == null){
-      const error = document.getElementById("x-value-error")
-      // @ts-ignore
-      error.innerText = "X cannot be empty"
-      setTimeout(() => {
-        // @ts-ignore
-        error.innerText = ""
-      }, 2000)
-      return false
-    }
-    else if (this.xValue > 3 || this.xValue < -3) {
-      const error = document.getElementById("x-value-error")
-      // @ts-ignore
-      error.innerText = "X should be between -3 and 3"
-      setTimeout(() => {
-        // @ts-ignore
-        error.innerText = ""
-      }, 2000)
-      return false
-    } else if (this.xValue.toString().length > 4) {
-      const error = document.getElementById("x-value-error")
-      // @ts-ignore
-      error.innerText = "No more than 4 symbols"
-      setTimeout(() => {
-        // @ts-ignore
-        error.innerText = ""
-      }, 2000)
-      return false
-    }
-    return true
+  getPoints() {
+    this.pointService.getHits();
+
+}
+
+  sendPoint(data){
+    this.pointService.addPoint(data).subscribe(resp => {
+      if(resp.data.hit) {
+        this.notifier.handle("Point is hit",)
+      }else{
+        this.notifier.handle("Point isn't hit")
+      }
+    }, err=>{
+      this.notifier.handle("Have some problem")
+    });
   }
+
+  get f() { return this.mainForm.controls; }
+
+  updateAllValues(){
+    // if(this.f.x.value != null && this.f.y.value != null && this.f.r.value != null){
+    this.graphComponent.XValue = this.f["x"].value;
+    this.graphComponent.YValue = this.f["y"].value;
+    this.graphComponent.rawRValue = this.f["r"].value;
+    this.graphComponent.setCrossings();
+
+  }
+
+  valueXChange($event) {
+    if (!$event.target.checked) return;
+    this.xInputOnChange = true;
+
+    this.updateAllValues();
+  }
+
+  valueYChange($event) {
+    if(this.f["y"].invalid) return;
+
+    this.updateAllValues();
+  }
+
+  valueRChange($event) {
+    if (!$event.target.checked) return;
+    this.rInputOnChange = true;
+
+    this.updateAllValues();
+  }
+
+
+
+
 
 
 }
