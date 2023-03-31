@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {LoginPayload} from '../login-payload';
-import {AuthService} from '../auth.service';
+import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
     this.router.navigate([path])
   }
 
-  // login() {
-  //   if (this.validateForm()) this.authService.login(this.username, this.password).subscribe((res)=>{
-  //     console.log(res.jwtAccessToken)
-  //     this.router.navigate(['/main'])
-  //   })
-  // }
+  login() {
+    if (this.validateForm()) this.authService.login(this.username, this.password).
+    subscribe((res)=>{
+      this.router.navigate(['/main'])
+    })
+  }
 
   validateForm() : boolean {
     this.usernameIsShort = this.username.length == 0

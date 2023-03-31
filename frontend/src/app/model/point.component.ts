@@ -1,8 +1,10 @@
 export interface Point {
 
-  id: number,
-  result: boolean,
-  x: number,
-  y: number,
-  r: number,
+        id: number,
+        x: number,
+        y: number,
+        r: number,
+        result: boolean
+
+
 }

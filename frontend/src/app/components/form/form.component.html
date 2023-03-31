@@ -1,36 +1,30 @@
-<div class="md:w-[500px]">
+<div class="form" id="form"  >
+    <div class="w-[100%] flex justify-center md:mt-28 mt-16">
+        <label for="x-input" class="text-white mt-3 mr-2 text-2xl">X </label>
+        <input id="x-input" type="number" [(ngModel)]="xValue" class="w-[260px]" pInputText />
+    </div>
+    <small id="x-value-error" class="p-error block h-3 mt-3 w-96 mx-auto text-center">
+        <span></span>
+    </small>
 
 
-    <div class="form" id="form">
-        <div class="w-[100%] flex justify-center md:mt-28 mt-16">
-            <label for="x-input">X</label>
-            <input id="x-input" type="number" [(ngModel)]="xValue" class="w-[260px]" pInputText/>
-        </div>
-        <small id="x-value-error" class="p-error block h-3 mt-3 w-96 mx-auto text-center">
-            <span></span>
-        </small>
+    <div class="w-[100%] flex justify-center  mt-10">
+        <label for="y-input" class="text-white text-2xl mr-1">Y :  {{yValue}}</label>
+        <input id="y-input" type="number" [(ngModel)]="yValue" class="w-[260px]" pInputText />
 
-
-        <div>
-            <label class="text-white mt-3 mr-2 text-2xl">Y </label>
-
-            <input type="text" pInputText [(ngModel)]="yValue" class="w-full"/>
-            <p-slider [(ngModel)]="yValue" class="w-full"></p-slider>
-        </div>
-
-
-        <div class="w-[100%] flex justify-center mt-10">
-            <label for="r-input" class="text-white text-2xl mt-3 mr-2 ">R </label>
-            <input id="r-input" type="number" [(ngModel)]="radiusService.rValue" class="w-[260px]" pInputText/>
-        </div>
-        <small id="r-value-error" class="p-error block h-3 mt-3 w-96 mx-auto text-center">
-            <span></span>
-        </small>
-
-        <div class="w-[100%] flex justify-center mt-10">
-            <button id="submitForm " type="button" label="Submit" class="p-button-raised text-2xl"
-                    (click)="submit()"></button>
-        </div>
     </div>
 
+
+    <div class="w-[100%] flex justify-center mt-10">
+        <label for="r-input" class="text-white text-2xl mt-3 mr-2 ">R </label>
+        <input id="r-input" type="number" [(ngModel)]="radiusService.rValue" class="w-[260px]" pInputText />
+    </div>
+    <small id="r-value-error" class="p-error block h-3 mt-3 w-96 mx-auto text-center">
+        <span></span>
+    </small>
+
+    <div class="w-[100%] flex justify-center mt-10">
+        <button pButton pRipple type="button" label="Submit" class="p-button-raised text-2xl" (click)="submit()"></button>
+    </div>
 </div>
+

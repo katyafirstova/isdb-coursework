@@ -17,11 +17,11 @@ export class HeaderComponent {
         }
     }
 
-    ngOnInit(): void {
-        // this.authService.restoreAuth().subscribe(()=>{
-        //   this.authService.setIsAuth(true)
-        //   this.redirect("main")
-    }
+    // ngOnInit(): void {
+    //     // this.authService.restoreAuth().subscribe(()=>{
+    //     //   this.authService.setIsAuth(true)
+    //     //   this.redirect("main")
+    // }
 
 
 }

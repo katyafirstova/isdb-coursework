@@ -1,22 +1,26 @@
-<div class="bg-light-gray h-[550px] max-w-[550px] shadow-md mx-auto md:mt-16 mt-8 overflow-hidden flex justify-center relative">
+<div class="login">
 
   <i class="pi pi-arrow-left absolute left-5 top-5 text-white" (click)="redirect('/')"></i>
 
   <div class="h-[50%] m-auto">
 
     <div class="field">
-      <label for="sign-in-username" class="block text-white text-lg">Username</label>
-      <!--        ng-invalid ng-dirty-->
+      <label>username</label>
+      <br><br>
       <input id="sign-in-username" type="username" aria-describedby="username2-help" class="" pInputText
              [(ngModel)]="username" maxlength="20"/>
       <small id="sign-in-username-help" class="p-error block h-3">
-        <span *ngIf="usernameIsShort">Cannot be empty!</span>
+        <span *ngIf="usernameIsShort">cannot be empty</span>
       </small>
-      <label for="sign-in-password" class="block text-white text-lg">Password</label>
+      <br><br><br>
+      <label for="sign-in-password">password</label>
+      <br><br>
       <input id="sign-in-password" type="password" aria-describedby="username2-help" class="" pInputText
              [(ngModel)]="password" maxlength="20"/>
-      <small id="sign-in-password-help" class="p-error block h-3"><span *ngIf="passwordIsShort">Cannot be empty!</span></small>
-    </div>D
+      <small id="sign-in-password-help" class="p-error block h-3"><span *ngIf="passwordIsShort">cannot be empty</span></small>
+    </div>
+
+    <br><br><br>
 
     <div class="w-[100%] flex justify-center">
       <button  type="button" label="Sign in" class="button"

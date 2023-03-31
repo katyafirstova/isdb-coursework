@@ -1,17 +1,14 @@
 .button {
   align-self: center;
-  margin: 0.75em 2vh 0;
-  padding: 3.5vh 10vh;
-  border-radius: 10vh;
+  //margin: 0.75em 2vh 0;
+  //padding: 3.5vh 10vh;
   display: inline-block;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   border: 2px solid rgba(0, 0, 0, 0);
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-.button:hover {
-  background-color: #EE209B;
+  marigin-left: 340px;
 }
 
 .field {
@@ -20,4 +17,13 @@
   padding-right: 20%;
   margin-left: 20px;
   margin-bottom: 20px;
+}
+
+.login {
+
+  background: #c6fff5;
+  margin: auto;
+  width: auto;
+
+
 }
