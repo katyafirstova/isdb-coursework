@@ -10,7 +10,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "point_table")
-
 public class Point {
 
     @javax.persistence.Id
@@ -36,10 +35,39 @@ public class Point {
     @Getter
     @Setter
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    private User initiator;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public Point(Double x, Double y, Double r, User authUserAsEntity) {
+    public Point(long id, double x, double y, double r, boolean result) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.result = result;
+    }
 
+    public Point(long id, double x, double y, double r, boolean result, User user) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.result = result;
+        this.user = user;
+    }
+
+    public Point(long id, double x, double y, double r, User user) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.user = user;
+    }
+
+    public Point(double x, double y, double r, User user) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.user = user;
     }
 
     public Point() {

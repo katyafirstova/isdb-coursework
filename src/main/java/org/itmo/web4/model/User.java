@@ -11,9 +11,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class User {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     @Id
+    @org.springframework.data.annotation.Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
     private long id;
@@ -29,14 +29,14 @@ public class User {
     private String password;
 
 
-    public User(String username, String password) {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
+    public User(long id, String username, String password) {
         this.id = id;
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 }

@@ -12,15 +12,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/auth")
 public class AuthController {
 
-
     @Autowired
     private AuthService authService;
 
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) {
         authService.register(registerRequest);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 

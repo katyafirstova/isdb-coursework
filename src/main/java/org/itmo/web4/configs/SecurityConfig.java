@@ -17,8 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.firewall.StrictHttpFirewall;
-
-import javax.servlet.Filter;
 import java.util.Arrays;
 
 @EnableWebSecurity
@@ -39,14 +37,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    @Bean
-    public StrictHttpFirewall httpFirewall() {
-        StrictHttpFirewall firewall = new StrictHttpFirewall();
-        firewall.setAllowedHttpMethods(Arrays.asList("HEAD", "DELETE", "POST", "GET", "PUT"));
-        return firewall;
-
-    }
-
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
@@ -64,6 +54,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
+
+    @Bean
+    public StrictHttpFirewall httpFirewall() {
+        StrictHttpFirewall firewall = new StrictHttpFirewall();
+        firewall.setAllowedHttpMethods(Arrays.asList("HEAD", "DELETE", "POST", "GET", "PUT"));
+        return firewall;
     }
 
     @Override

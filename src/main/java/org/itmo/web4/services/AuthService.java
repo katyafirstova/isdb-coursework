@@ -42,6 +42,7 @@ public class AuthService {
         user.setUsername(registerRequest.getUsername());
         user.setPassword(encodePassword(registerRequest.getPassword()));
         userRepository.save(user);
+
         return new ResponseEntity(HttpStatus.OK);
     }
 
