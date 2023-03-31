@@ -26,7 +26,7 @@ export class FormComponent {
         if (this.validateX() && this.radiusService.validateR() && this.validateY()) {
             this.pointService.addPoint(this.xValue, this.yValue).subscribe()
             setTimeout(() => {
-                this.pointService.getHits().subscribe()
+                this.pointService.getHits()
             }, 1000)
         }
     }
