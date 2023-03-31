@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/points")
-
 public class PointController {
 
     private final PointRepository pointRepository;
@@ -18,7 +17,7 @@ public class PointController {
         this.pointRepository = pointRepository;
     }
 
-    @GetMapping("/getPoints")
+    @RequestMapping(value = "/getPoints", method = RequestMethod.GET)
     public List<Point> getAllPoints() {
         return pointRepository.findAll();
     }
