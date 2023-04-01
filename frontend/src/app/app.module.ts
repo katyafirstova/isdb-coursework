@@ -5,7 +5,6 @@ import {InputTextModule} from 'primeng/inputtext';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RegisterComponent} from './auth/register/register.component';
-import {RegisterSuccessComponent} from './auth/register-success/register-success.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -30,14 +29,14 @@ import {GraphComponent} from "./components/graph/graph.component";
   declarations: [
     AppComponent,
     RegisterComponent,
+    GraphComponent,
     LoginComponent,
-    RegisterSuccessComponent,
     HeaderComponent,
     FormComponent,
     IndexPageComponent,
     MainPageComponent,
     TableComponent,
-      GraphComponent,
+
 
   ],
     imports: [

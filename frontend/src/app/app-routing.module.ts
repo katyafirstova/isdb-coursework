@@ -4,13 +4,12 @@ import {LoginComponent} from "./auth/login/login.component";
 import {RegisterComponent} from "./auth/register/register.component";
 import {MainPageComponent} from "./pages/main-page/main-page.component";
 import {HeaderComponent} from "./header/header.component";
-import {RegisterSuccessComponent} from "./auth/register-success/register-success.component";
+import {AuthGuardService} from "./guard/auth-guard.service";
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardService]},
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuardService]},
   { path: 'main', component: MainPageComponent},
-  { path: 'register-success', component: RegisterSuccessComponent},
   {path: '', component: HeaderComponent}
 ];
 @NgModule({

@@ -5,6 +5,7 @@
   background-size: contain;
   border: solid 2px;
   border-color: black!important;
+  margin-left: 600px;
 }
 
 @media (min-width: 891px){
@@ -16,4 +17,7 @@
     border-color: black!important;
   }
 }
-//
+span {
+  margin-left: 600px;
+
+}

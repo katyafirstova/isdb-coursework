@@ -22,7 +22,6 @@ export class GraphComponent implements OnInit, OnDestroy {
     }
 
     xValue: string = ' '
-
     yValue: string = ' '
 
     ngOnInit(): void {
@@ -40,24 +39,27 @@ export class GraphComponent implements OnInit, OnDestroy {
                     // this.hitsService.getPagesCount().subscribe()
                 }, 1000)
             }
-        })
+        });
     }
 }
 
-    //
-    //     const radiusObserver = new MutationObserver(() => {
-    //         this.graphService.drawHits(this.hitsService.points);
-    //     })
-    //
-    //     // @ts-ignore
-    //     radiusObserver.observe(document.querySelector("#r-input"), {attributes: "aria-valuenow"})
-    //
-    //     // @ts-ignore
-    //     this.draw = setInterval(() => {
-    //         this.pointService.getHits().subscribe()
-    //         this.pointService.drawHits(this.pointService.points)
-    //     }, 1000)
-    //
-    // }
+// }
+//
+//
+//         const radiusObserver = new MutationObserver(() => {
+//             this.graphService.drawHits(this.hitsService.points);
+//         })
+//
+//         // @ts-ignore
+//         radiusObserver.observe(document.querySelector("#r-input"), {attributes: "aria-valuenow"})
+//
+//         // @ts-ignore
+//         this.draw = setInterval(() => {
+//             this.pointService.getHits().subscribe()
+//             this.pointService.drawHits(this.pointService.points)
+//         }, 1000)
+//
+//     }
+// }
 
 

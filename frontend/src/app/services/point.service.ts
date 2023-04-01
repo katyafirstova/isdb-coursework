@@ -4,7 +4,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {RadiusService} from "./radius.service";
 import {PointResponse} from "../model/point-response.component";
 import {Point} from "../model/point.component";
-import {GraphService} from "./graph.service";
+// import {GraphService} from "./graph.service";
 
 
 const httpOptions = {
@@ -20,7 +20,8 @@ export class PointService {
 
     public points: BehaviorSubject<Point[]> = new BehaviorSubject<Point[]>([]);
 
-    constructor(private http: HttpClient, private radiusService: RadiusService, private  graphService: GraphService) {
+
+    constructor(private http: HttpClient, private radiusService: RadiusService) {
     }
 
 
@@ -50,6 +51,7 @@ export class PointService {
             /*обновление значений внутри регистратора слушателей*/
             this.points.next(data as Point[]);
             console.log('points got');
+
         }, (err: HttpErrorResponse) => {
             /*неккоректный token*/
             if (err.status == 401 || err.status == 403 ) {
@@ -58,7 +60,7 @@ export class PointService {
         });
     }
 
-    public addPoint(x: number, y: number) {
+    public addPoint(x : number, y : number) {
         return this.http.post<string>("api/points/insert", {
             x: x,
             y: y,
@@ -68,6 +70,9 @@ export class PointService {
             retry(2)
         )
     }
+
+
+
     removePoints(): Observable<any> {
         return this.http.delete('api/points/clear', httpOptions);
     }

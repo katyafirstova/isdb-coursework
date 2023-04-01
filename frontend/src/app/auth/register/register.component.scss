@@ -1,19 +1,10 @@
-.button {
-  align-self: center;
-  margin: 0.75em 2vh 0;
-  padding: 3.5vh 10vh;
-  border-radius: 10vh;
-  display: inline-block;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  border: 2px solid rgba(0, 0, 0, 0);
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+.register {
+  margin-left: 40%;
+  margin-top: 10%;
 }
 
-.register {
-  background: #c6fff5;
-  margin: auto;
-  width: 50%;
-  padding: 10px;
+#sign-up-username, #sign-up-password {
+  height: 50px;
+  width: 250px;
+  font-size: 20px;
 }

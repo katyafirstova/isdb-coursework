@@ -1,4 +1,4 @@
-export interface AuthResponse{
-    message: string,
-    jwtAccessToken: string
+export class AuthResponse{
+    message = '';
+
 }

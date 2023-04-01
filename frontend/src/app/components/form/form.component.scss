@@ -1,32 +1,38 @@
-#submit {
-  align-self: center;
-  border-radius: 5vh;
-  display: inline-block;
-  text-decoration: none;
-  text-transform: uppercase;
+.submit, .back, .clear {
+    align-self: center;
+    margin: 0.75em 2vh 0;
+    padding: 1.5vh 5vh;
+    border-radius: 5vh;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 2px solid rgba(0, 0, 0, 0);
+  background-color:  #ffaed9;
+
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-  margin-left: 10px;
+  }
+
+
+.submit:hover, .back:hover, clear:hover {
+  background-color: palevioletred;
+
 }
-
-
 
 form {
   margin-top: 17%;
-  padding: 10px 15px;
+
   width: 310px;
   min-height: 310px;
   margin-left: 50px;
 }
 
 .x-value, .y-value, .r-value {
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 30px;
-    border-radius: 5px;
-    background: blue;
-    color: pink;
-
-
-
+  height: 70px;
+  width: 250px;
+  font-size: 20px;
 }
+
+
+
+

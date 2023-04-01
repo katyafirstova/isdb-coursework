@@ -1,44 +1,41 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {LoginPayload} from '../login-payload';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
+import {User} from "../../model/user";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
+  user: User = new User();
+  errorMessage: string;
 
-  username: string = ""
-  password: string = ""
-
-  usernameIsShort: boolean = false
-  passwordIsShort: boolean = false
-
-  constructor(private router: Router, private authService: AuthService) {
-  }
-
-  redirect(path: String) {
-    this.router.navigate([path])
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   login() {
-    if (this.validateForm()) this.authService.login(this.username, this.password).
-    subscribe((res)=>{
-      this.router.navigate(['/main'])
-    })
+    this.authService.login(this.user).subscribe(
+        resp => this.router.navigate(['/main']),
+        (err: HttpErrorResponse) => {
+          console.log(err);
+          switch (err.status) {
+            case 0:
+              this.errorMessage = 'Невозможно подключиться к серверу';
+              break;
+            case 401:
+              this.errorMessage = 'Введен неверный логин или пароль';
+              break;
+            default:
+              this.errorMessage = 'Неизвестная ошибка ' + err.status;
+          }
+        });
   }
 
-  validateForm() : boolean {
-    this.usernameIsShort = this.username.length == 0
-    this.passwordIsShort = this.password.length == 0
-    return !this.usernameIsShort && !this.passwordIsShort
-  }
 
-  ngOnInit() {
-  }
+
 
 }

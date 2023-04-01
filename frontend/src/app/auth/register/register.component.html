@@ -6,9 +6,9 @@
       <label for="sign-up-username" class="block text-white text-lg">username</label>
       <br><br>
       <input id="sign-up-username" type="username" aria-describedby="username2-help" class="" pInputText
-             [(ngModel)]="username" maxlength="20"
+             [(ngModel)]="user.username" maxlength="20"
       />
-      <small id="sign-up-username-help" class="p-error block h-3" *ngIf="usernameIsShort">cannot be empty</small>
+<!--      <small id="sign-up-username-help" class="p-error block h-3" *ngIf="usernameIsShort">cannot be empty</small>-->
       <br><br>
 
     </div>
@@ -17,27 +17,27 @@
       <label for="sign-up-password" class="block text-white text-lg">password</label>
       <br><br>
       <input id="sign-up-password" type="password" aria-describedby="username2-help" class="" pInputText
-             [(ngModel)]="password" maxlength="20"
+             [(ngModel)]="user.password" maxlength="20"
       />
-      <small id="sign-up-password-help" class="p-error block h-3" *ngIf="passwordIsShort">cannot be empty</small>
+<!--      <small id="sign-up-password-help" class="p-error block h-3" *ngIf="passwordIsShort">cannot be empty</small>-->
       <br><br>
 
     </div>
 
-    <div class="field mt-3">
-      <label for="sign-up-password2" class="block text-white text-lg">Password again</label>
-      <br><br>
-      <input id="sign-up-password2" type="password" aria-describedby="username2-help" class="" pInputText
-             [(ngModel)]="password2" maxlength="20"
-      />
-      <small id="sign-up-password2-help" class="p-error block h-3" *ngIf="!passwordsEquals">different passwords</small>
-      <br><br>
+<!--    <div class="field mt-3">-->
+<!--      <label for="sign-up-password2" class="block text-white text-lg">Password again</label>-->
+<!--      <br><br>-->
+<!--      <input id="sign-up-password2" type="password" aria-describedby="username2-help" class="" pInputText-->
+<!--             [(ngModel)]="password2" maxlength="20"-->
+<!--      />-->
+<!--      <small id="sign-up-password2-help" class="p-error block h-3" *ngIf="!passwordsEquals">different passwords</small>-->
+<!--      <br><br>-->
 
-    </div>
+<!--    </div>-->
 
     <div class="w-[100%] flex justify-center">
-      <button class="button" type="button" label="Sign in"
-              (click)="signUp()" [routerLink]="['/register-success']"
+      <button class="button" type="button" label="register"
+              (click)="register()" [routerLink]="['/login']"
       >register</button>
     </div>
 

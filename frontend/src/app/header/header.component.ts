@@ -12,16 +12,10 @@ export class HeaderComponent {
     smallWidth = window.innerWidth < 400
 
     constructor(authService: AuthService, router: Router) {
-        if (authService.setIsAuth()) {
+        if (authService.authenticated) {
             router.navigate(['']);
         }
     }
-
-    // ngOnInit(): void {
-    //     // this.authService.restoreAuth().subscribe(()=>{
-    //     //   this.authService.setIsAuth(true)
-    //     //   this.redirect("main")
-    // }
 
 
 }

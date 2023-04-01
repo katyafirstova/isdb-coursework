@@ -7,6 +7,7 @@ import {ErrorService} from "./error.service";
 import {User} from "../model/user";
 import {AuthResponse} from "../model/auth-response";
 import {PointService} from "./point.service";
+import {Router} from "@angular/router";
 // import {HitsService} from "./hits.service";
 
 const httpOptions = {
@@ -17,52 +18,45 @@ const httpOptions = {
 })
 export class AuthService {
 
-    private isAuth = false
-    constructor(private http: HttpClient, private errorService: ErrorService, private pointService: PointService) {
+    public authenticated = false;
+
+    constructor(private http: HttpClient, private router: Router) { }
+    login(user: User) {
+        return this.http.post("api/auth/login", user)
+            .pipe(tap(data => {
+                const token = (<AuthResponse>data).message;
+                localStorage.setItem('authToken', <string>token);
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                this.authenticated = true;
+            }, error => {
+                console.log('login error: ' + error);
+            }));
+    }
+    register(user: User) {
+        return this.http.post( 'api/auth/register', user);
     }
 
-    setIsAuth() : boolean {
-        return this.isAuth;
-    }
-
-    getIsAuth(): boolean {
-        return this.isAuth
-    }
-    restoreAuth() {
-        return this.http.post("api/points/getPoints", {
-            page: 1,
-            offset: "Asia/Tokyo"
-        }).pipe(
-            delay(1000),
-            retry(2)
-        )
-    }
-
-    login(username: string, password: string): Observable<LoginPayload> {
-        return this.http.post<LoginPayload>("api/auth/login",
-            {
-                username: username,
-                password: password
-    }).pipe(
-            catchError(this.errorHandler.bind(this))
-        )
-    }
+    // logOut() {
+    //     const user: User = JSON.parse(localStorage.getItem('currentUser'));
+    //
+    //     return this.http.post( '/users/logout', user, {headers: this.getHeaders()}).subscribe(
+    //         data => {
+    //             this.authenticated = false;
+    //         },
+    //         error => {
+    //             console.log('logout error: ' + error);
+    //         })
+    //         // Действия, которые делаем в самом конце
+    //         .add(() => {
+    //             localStorage.removeItem('authToken');
+    //             localStorage.removeItem('currentUser');
+    //             // Надо обновить страницу, чтобы стили корректно подгрузились и так как данных о пользователе уже нет
+    //             // будет автоматический редирект на страницу логина
+    //             window.location.reload();
+    //         });
+    // }
 
 
-    register(username: string, password: string): Observable<AuthResponse> {
-        return this.http.post<AuthResponse>("/api/auth/register",
-            {
-                username: username,
-                password: password
-            }).pipe(
-            catchError(this.errorHandler.bind(this))
-        )
-    }
 
-
-    private errorHandler(error: HttpErrorResponse) {
-        this.errorService.handle(error.error.message)
-        return throwError(() => error.message)
-    }
 
 }
