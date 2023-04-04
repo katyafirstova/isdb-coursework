@@ -11,9 +11,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Service
@@ -23,6 +28,8 @@ public class AuthService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserDetailsService userDetailsService;
 
 
     @Autowired
@@ -36,14 +43,12 @@ public class AuthService {
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     private JwtProvider jwtProvider;
 
-    public ResponseEntity register(RegisterRequest registerRequest) {
-
+    public ResponseEntity<?> register(RegisterRequest registerRequest) {
         User user = new User();
         user.setUsername(registerRequest.getUsername());
         user.setPassword(encodePassword(registerRequest.getPassword()));
         userRepository.save(user);
-
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     private String encodePassword(String password) {

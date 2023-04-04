@@ -3,6 +3,7 @@ package org.itmo.web4.security;
 import javax.servlet.*;
 
 import org.itmo.web4.exceptions.StoredKeyException;
+import org.itmo.web4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,9 +30,12 @@ public class JwtAuthFilter extends OncePerRequestFilter implements Filter  {
     @Autowired
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     private JwtProvider jwtProvider;
-
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
@@ -58,14 +62,5 @@ public class JwtAuthFilter extends OncePerRequestFilter implements Filter  {
         return bearerToken;
     }
 
-//    @Override
-//    public void init(FilterConfig filterConfig) throws javax.servlet.ServletException {
-//
-//    }
-//
-//    @Override
-//    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
-//                         javax.servlet.FilterChain filterChain) throws IOException {
-//
-//    }
+
 }

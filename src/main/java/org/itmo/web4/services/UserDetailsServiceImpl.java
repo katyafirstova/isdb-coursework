@@ -1,5 +1,6 @@
 package org.itmo.web4.services;
 
+import org.itmo.web4.exceptions.UserNotFoundException;
 import org.itmo.web4.model.User;
 import org.itmo.web4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username).orElseThrow(()->new
-                UsernameNotFoundException("No user found" + username));
+                UserNotFoundException(username));
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                 true, true, true, true,
-                getAuthorities("ROLE_USER"));
+                getAuthorities("USER"));
     }
 
     private Collection<? extends GrantedAuthority> getAuthorities(String roleUser) {
