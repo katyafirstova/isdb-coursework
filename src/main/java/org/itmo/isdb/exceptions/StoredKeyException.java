@@ -1,4 +1,4 @@
-package org.itmo.web4.exceptions;
+package org.itmo.isdb.exceptions;
 
 public class StoredKeyException extends RuntimeException{
     public StoredKeyException() {

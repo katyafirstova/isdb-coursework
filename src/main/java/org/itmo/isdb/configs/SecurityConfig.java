@@ -1,7 +1,7 @@
-package org.itmo.web4.configs;
+package org.itmo.isdb.configs;
 
-import org.itmo.web4.repository.UserRepository;
-import org.itmo.web4.security.JwtAuthFilter;
+import org.itmo.isdb.repository.UserRepository;
+import org.itmo.isdb.security.JwtAuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;

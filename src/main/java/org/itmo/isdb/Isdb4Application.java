@@ -1,14 +1,14 @@
-package org.itmo.web4;
+package org.itmo.isdb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class Web4Application {
+public class Isdb4Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Web4Application.class, args);
+        SpringApplication.run(Isdb4Application.class, args);
     }
 
 }

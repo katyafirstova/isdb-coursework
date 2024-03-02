@@ -1,15 +1,13 @@
-package org.itmo.web4.security;
+package org.itmo.isdb.security;
 
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import org.itmo.web4.exceptions.StoredKeyException;
-import org.itmo.web4.model.User;
+import org.itmo.isdb.exceptions.StoredKeyException;
+import org.itmo.isdb.model.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.*;

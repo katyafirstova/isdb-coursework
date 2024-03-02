@@ -1,9 +1,8 @@
-package org.itmo.web4.security;
+package org.itmo.isdb.security;
 
 import javax.servlet.*;
 
-import org.itmo.web4.exceptions.StoredKeyException;
-import org.itmo.web4.repository.UserRepository;
+import org.itmo.isdb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,9 +14,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.Filter;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

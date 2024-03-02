@@ -1,4 +1,4 @@
-package org.itmo.web4.dto;
+package org.itmo.isdb.dto;
 
 import lombok.Getter;
 import lombok.Setter;
